@@ -1,0 +1,95 @@
+import openai
+
+from openai import OpenAI
+
+client = OpenAI(api_key='sk-proj-b8ymyvv75LlzBOisUYH8T3BlbkFJPeh2KB99bpIZ4WihDJQs')
+
+def evaluate_grouping(feature_name: str, groupings: str) -> tuple:
+    """
+    Evaluates a grouping using GPT API and the crafted prompt, returning the grade and reason.
+
+    Parameters:
+        feature_name (str): The name of the feature.
+        groupings (str): The groupings to evaluate, provided as a string.
+
+    Returns:
+        tuple: A tuple containing the grade (int) and the reason (str).
+    """
+    # Define the crafted prompt
+    prompt = f"""
+    Prompt Template
+
+    Part 1: Mission Context
+
+    You are tasked with evaluating the semantic value of a given grouping for a specified feature. The goal is to assign a grade (1, 2, 3, or 4) based on how structured and meaningful the grouping is in relation to the feature. Your grading criteria are as follows:
+        1. Grade 1 - Total Random:
+    The groupings appear arbitrary, with no discernible structure or semantic meaning. They are not useful for analysis or interpretation.
+        2. Grade 2 - Structured in Some Way:
+    The groupings show some internal structure or logic but lack significant semantic meaning. They may make sense in a general context but are not clearly tied to meaningful distinctions.
+        3. Grade 3 - It Has Significant Semantic Meaning in Some Contexts:
+    The groupings reflect meaningful distinctions relevant to some real-world scenarios or domains. They are not standardized but provide value in specific applications.
+        4. Grade 4 - This Is a Defined Objective Grouping:
+    The groupings are based on universally recognized or objective standards, such as those established by scientific or governing bodies. They align with “objective truth.”
+
+    You will use this context to evaluate the grouping provided.
+
+    Part 2: The Feature
+
+    Feature: {feature_name}
+
+    Part 3: The Grouping
+
+    Grouping: {groupings}
+
+    Example Interaction
+
+    Feature: Temperature in Celsius
+    Grouping: -30–0, 1–15, 16–30, 31–50, 51+
+    Response: Grade 2 - Structured in some way.
+
+    Feature: Temperature in Celsius
+    Grouping: ≤0, 1–35, 36–50, 51+
+    Response: Grade 4 - This is a defined objective grouping.
+    """
+
+    # Call the GPT API
+    try:
+        response = client.chat.completions.create(model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "You are an assistant that evaluates the semantic value of groupings based on structured criteria."},
+                {"role": "user", "content": prompt}
+        ])
+
+        # Extract the GPT response
+        gpt_response = response.choices[0].message.content.strip()
+
+        # Parse the grade and reason
+        grade = int(gpt_response.split("Grade ")[1][0])  # Extract the grade number
+        reason = gpt_response.split("- ")[1].strip()     # Extract the reason
+        return grade, reason
+
+    except Exception as e:
+        raise RuntimeError(f"Error during GPT API call: {e}")
+
+def main():
+    """
+    Main function to test the evaluate_grouping function with predefined examples.
+    """
+    # Predefined features and groupings
+    test_cases = [
+        ("Monthly Salary in Dollars", "0-1k, 1-10k, 11k+"),
+        ("Temperature in Celsius", "-30-0, 1-15, 16-30, 31-50, 51+"),
+        ("Temperature in Celsius", "≤0, 1-35, 36-50, 51+"),
+        ("Age in Years", "0-12, 13-19, 20-64, 65+"),
+        ("Height in Centimeters", "0-100, 101-150, 151-200, 201+")
+    ]
+
+    # Iterate through test cases and print results
+    for feature, grouping in test_cases:
+        try:
+            grade, reason = evaluate_grouping(feature, grouping)
+            print(f"Feature: {feature}, Grouping: {grouping}\nGrade: {grade}, Reason: {reason}\n")
+        except RuntimeError as e:
+            print(f"Error evaluating feature '{feature}' with grouping '{grouping}': {e}\n")
+
+main()
