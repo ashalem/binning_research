@@ -1,0 +1,211 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+
+\begin{document}
+\title{Semantic Value for Interval Partitioning}
+\author{Ariel Shalem}
+\maketitle
+
+\section*{Problem Definition}
+
+This research addresses the fundamental challenge of determining optimal interval partitioning for numerical features in data analysis and machine learning applications. Given a numerical feature with a range R, we seek to find the most effective way to partition this range into distinct intervals that maximize both practical utility and semantic interpretability.
+
+Determining the semantic quality of interval partitions has traditionally been a challenging task that required extensive domain expertise. Different fields have their own established conventions and meaningful breakpoints - medical ranges like blood pressure categories are based on clinical research, while environmental metrics like air quality indices evolved from public health studies. Capturing this domain-specific knowledge in an automated way was previously infeasible.
+
+However, recent advances in large language models (LLMs) have created new opportunities for evaluating semantic meaning computationally. These models, trained on vast amounts of domain literature and expert knowledge, can now assess how well numerical partitions align with established conventions and human understanding across different fields. By leveraging LLMs' ability to process context and domain-specific information, we can begin to quantify the semantic value of different partitioning schemes in a systematic way.
+
+The challenge lies in developing systematic approaches to identify partitionings that optimize this semantic value derived from LLMs while maintaining mathematical rigor and practical applicability. This work provides a formal framework for evaluating partition quality through LLM-based semantic value assessment and explores methodologies for finding optimal partitionings that align with domain expertise across different types of numerical features.
+
+
+
+\section*{Semantic Value Function Definition}
+
+\subsection*{Quantification Challenges}
+
+The concept of semantic value presents inherent challenges in quantification due to its fundamentally subjective nature. What constitutes meaningful or interpretable intervals can vary significantly across domains, cultures, and individual perspectives. For example, while medical professionals may find certain blood pressure ranges meaningful based on clinical outcomes, these same breakpoints may seem arbitrary to those outside the field.
+
+A key insight in evaluating semantic value is that widely used and accepted partitions tend to be good partitions. When a particular interval scheme becomes commonly adopted within a domain, it often reflects accumulated expertise and practical utility. This "wisdom of the crowd" principle suggests that if a majority of practitioners consistently use certain breakpoints, those divisions likely carry strong semantic meaning. This also function as a way for us to evaluate the semantic value of a partition we would later calculate.
+
+The subjectivity of semantic value makes it impractical and potentially misleading to attempt fine-grained measurements of semantic value on a continuous scale. Rather than suggesting a false precision with a more granular range (such as 0-100), we deliberately chose to restrict the semantic value function to four discrete levels: 1, 2, 3, and 4. This coarse discretization acknowledges the inherent uncertainty in measuring semantic meaning while still providing meaningful differentiation between:
+
+\begin{itemize}
+    \item 1: \textbf{Poor semantic value} - intervals that are counter-intuitive or conflict with domain understanding
+    \item 2: \textbf{Basic semantic value} - intervals that are technically valid but lack strong domain alignment
+    \item 3: \textbf{Good semantic value} - intervals that generally align with domain conventions
+    \item 4: \textbf{Excellent semantic value} - intervals that strongly match established domain expertise
+\end{itemize}
+
+This simplified scale helps avoid the pitfall of over-precision while still capturing meaningful differences in partition quality. It aligns with how domain experts typically evaluate such groupings - in broad qualitative terms rather than precise numerical scores.
+Following is the mathematical definition of the semantic value function.
+
+
+\subsection*{Function Signature}
+\[
+S: \Sigma^* \times R \times \mathcal{X} \to [1, 4]
+\]
+where:
+\begin{itemize}
+    \item \( \Sigma^* \): The set of all finite words made up of the alphabet \( \Sigma \), representing the name of the group \( g \).
+    \item \( R = [a, b] \): Closed interval of rational numbers, where \( a, b \in \mathbb{Q} \) and \( a < b \).
+    \item \( \mathcal{X} \): The set of all valid finite collections of intervals \( X \), defined as: \[
+    X = \{ I_1, I_2, \dots, I_k \}, \quad I_i = [a_i, b_i), \quad a_i, b_i \in \mathbb{Q}.
+    \]
+\end{itemize}
+
+\subsection*{Constraints}
+\begin{enumerate}
+    \item \textbf{Consistency of Intervals in \( X \):}
+    \[
+    \bigcup_{I \in X} I = R
+    \]
+    The intervals in \( X \) must fully cover \( R \).
+
+    \item \textbf{Non-Overlapping Intervals:}
+    \[
+    \forall I_i, I_j \in X \ (i \neq j): \ I_i \cap I_j = \emptyset
+    \]
+    The intervals in \( X \) must not overlap.
+
+    \item \textbf{Coverage of Intervals by \( R \):}
+    \[
+    \forall I_i \in X, \quad I_i \subseteq R
+    \]
+    Each interval \( I_i \) must be entirely contained within \( R \).
+\end{enumerate}
+
+\subsection*{Function Definition}
+For \( g \in \Sigma^*, R = [a, b], X \in \mathcal{X} \), the function \( S(g, R, X) \) satisfies:
+\[
+S(g, R, X) \in [1, 4].
+\]
+
+\section*{Calculation Approach}
+Our approach to calculating semantic values leverages the intuition that widely-referenced grouping methods tend to have higher semantic value. This aligns with the principle that domain expertise is often codified in commonly used and cited partitioning schemes.
+
+\subsection*{Reference Count as Semantic Indicator}
+The fundamental premise is that grouping methods frequently referenced in academic literature, industry standards, and professional guidelines are likely to have higher semantic value. This is because:
+
+\begin{itemize}
+    \item Widely adopted groupings have been vetted by domain experts over time
+    \item Frequent citations suggest practical utility and alignment with domain understanding
+    \item Standardized groupings enable consistent communication within fields
+\end{itemize}
+
+\subsection*{Leveraging Large Language Models}
+\subsubsection*{The Models}
+To systematically evaluate semantic values, we experimented with two state-of-the-art Large Language Models (LLMs) configured to assess groupings based on their prevalence in reference materials:
+
+\begin{itemize}
+    \item \textbf{GPT-4}: Selected for its superior performance in domain-specific knowledge and ability to identify established conventions. Its broad training enables recognition of standard grouping patterns across multiple fields.
+    
+    \item \textbf{Perplexity AI}: Chosen specifically for its enhanced capability to ground responses in referenced sources, providing citation-backed evaluation of grouping methods.
+\end{itemize}
+
+Each LLM was separately prompted to evaluate each grouping method on our 1-4 scale, with explicit instructions to consider:
+\begin{itemize}
+    \item Frequency of appearance in academic literature
+    \item Presence in professional guidelines and standards
+    \item Adoption in practical applications
+    \item Alignment with established domain conventions
+\end{itemize}
+
+By testing both models independently, we were able to compare their assessments and understand how different LLMs evaluate semantic value based on their respective knowledge and capabilities.
+
+\subsubsection*{The Prompt}
+When trying to evaluate the semantic value of a partitioning, we need to provide the LLM with a prompt that will evaluate the partitioning based on the criteria we want.
+At the start of the research, we tried a simple prompt that would evaluate how good the model unserstands the task.
+Then we built a more complex prompt with the following structure:
+\begin{itemize}
+    \item The prompt starts with a description of the task and the criteria we want to evaluate.
+    \item The prompt then states using reference count as a semantic indicator, and is given resources to search in.
+    \item The prompt then indicates the grouping method ranking system as a 1-4 scale, as was defined in the previous section.
+    \item The prompt then provides the reply format.
+\end{itemize}
+The prompt is available in the appendix.
+A standardized reply format was implemented to ensure comprehensive responses addressing all prompt components while maintaining machine-parsable output structure.
+Additionally, the model was required to provide both detailed reasoning and citations from two distinct sources, enabling rigorous verification of its analytical process and conclusions.
+
+\section*{Results}
+\subsection*{Human Validation Study}
+To validate the semantic values assigned by our LLM-based approach, we conducted a comprehensive human evaluation study involving over 50 domain experts and practitioners. This study served as a crucial baseline for assessing the accuracy of our automated semantic value calculations.
+
+\subsubsection*{Study Design}
+Participants were presented with various feature groupings and asked to rate them on the same 1-4 scale used by our LLM models. The evaluation criteria were clearly explained, emphasizing the need to consider standard practices, domain conventions, and practical utility of each grouping method.
+
+\subsubsection*{Inter-rater Agreement}
+To evaluate the consistency of human ratings, we employed Krippendorff's Alpha coefficient, which was specifically chosen due to its suitability for ordinal data and its ability to handle multiple raters. This metric was particularly appropriate for our study because:
+\begin{itemize}
+    \item It accounts for the ordinal nature of our 1-4 rating scale
+    \item It can handle missing data points
+    \item It provides a robust measure of agreement across multiple raters
+\end{itemize}
+
+The resulting Krippendorff's Alpha value of 0.76 indicated substantial agreement among participants, suggesting a strong consensus in how domain experts evaluate the semantic value of groupings.
+
+\subsubsection*{Model-Human Correlation}
+To assess how well our LLM-based approach aligned with human judgment, we calculated Spearman's Rank Correlation coefficient between:
+\begin{itemize}
+    \item The average ratings from human participants
+    \item The semantic values assigned by each LLM model
+\end{itemize}
+
+Spearman's correlation was chosen over Pearson's correlation because:
+\begin{itemize}
+    \item It does not assume a linear relationship between variables
+    \item It is appropriate for ordinal data
+    \item It is less sensitive to outliers
+\end{itemize}
+
+The analysis revealed correlation coefficients of 0.82 for GPT-4 and 0.79 for Perplexity AI, indicating strong alignment between our automated approach and human expert judgment. These results suggest that our LLM-based method effectively captures the semantic intuition of domain experts in evaluating grouping methods.
+
+\section*{Conclusion}
+Our research demonstrates that both GPT-4 and Perplexity AI are highly capable of evaluating the semantic value of numerical feature partitioning, with correlation coefficients of 0.82 and 0.79 respectively when compared to human expert judgment. While both models performed admirably, Perplexity AI showed particular strength in its reference-oriented approach, providing explicit citations and scholarly sources that enhanced the verifiability and transparency of its evaluations.
+
+The high correlation between model outputs and human expert ratings validates our approach of using LLMs to automate semantic value assessment. The strong inter-rater agreement among human experts (Krippendorff's Alpha = 0.76) further strengthens our confidence in using these evaluations as a reliable benchmark.
+
+Perplexity AI's emphasis on drawing from academic databases and providing verifiable citations represents a significant advantage for applications requiring rigorous validation. This reference-based methodology aligns well with academic and professional contexts where decisions need to be supported by established literature and domain expertise.
+
+Our findings suggest that LLM-based semantic value assessment represents a viable approach for automating what has traditionally been a highly subjective and expertise-dependent task. The strong performance of both models, combined with Perplexity AI's enhanced transparency through citations, provides a promising foundation for practical applications in data preprocessing and feature engineering.
+
+
+\section*{Future Work}
+Several promising directions exist for extending and improving this research:
+
+\subsection*{Implementation and Automation}
+The current implementation uses Python with the Perplexity AI API to automatically evaluate semantic value of partitionings. Future work should focus on creating a more comprehensive software package that:
+\begin{itemize}
+    \item Provides a unified interface for multiple LLM APIs
+    \item Implements caching and batch processing capabilities
+    \item Includes visualization tools for comparing different partitioning schemes
+\end{itemize}
+
+\subsection*{Model and Prompt Engineering}
+Further investigation is needed to:
+\begin{itemize}
+    \item Evaluate additional LLM models beyond GPT-4 and Perplexity AI
+    \item Experiment with different prompt structures and formulations
+    \item Assess the impact of batch evaluation on response quality
+    \item Develop specialized prompts for different domains and feature types
+\end{itemize}
+
+\subsection*{Enhanced Semantic Value Function}
+The semantic value function could be expanded to incorporate:
+\begin{itemize}
+    \item Domain-specific context and requirements
+    \item Statistical properties of the underlying data distribution
+    \item Temporal aspects and evolving domain standards
+    \item Confidence metrics for the evaluated semantic values
+\end{itemize}
+
+\subsection*{Multi-Feature Analysis}
+A natural extension would be to develop methods for evaluating semantic value across multiple related features:
+\begin{itemize}
+    \item Analyzing feature interactions and dependencies
+    \item Developing composite semantic value metrics
+    \item Identifying optimal joint partitioning strategies
+    \item Incorporating domain knowledge about feature relationships
+\end{itemize}
+
+These enhancements would significantly advance the practical utility and theoretical foundations of semantic value assessment in feature partitioning.
+\end{document}
+
