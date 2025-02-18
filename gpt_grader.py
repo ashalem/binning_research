@@ -1,12 +1,11 @@
 from typing import List, Tuple
-import openai
+from openai import OpenAI
 import re
 
-GPT_API_KEY = "sk-proj-b8ymyvv75LlzBOisUYH8T3BlbkFJPeh2KB99bpIZ4WihDJQs"
+client = OpenAI(api_key='sk-proj-b8ymyvv75LlzBOisUYH8T3BlbkFJPeh2KB99bpIZ4WihDJQs')
 
 def evaluate_groupings_gpt(
     tasks: List[Tuple[str, List[Tuple[float, float]], Tuple[float, float]]],
-    api_key: str
 ) -> List[tuple]:
     """
     Evaluates multiple groupings using GPT-4 API, returning grades and explanations for each.
@@ -16,7 +15,6 @@ def evaluate_groupings_gpt(
             - feature_name (str): The name of the feature
             - groupings (List[Tuple[float, float]]): The groupings to evaluate
             - feature_range (Tuple[float, float]): The entire range of values
-        api_key (str): Your OpenAI API key
 
     Returns:
         List[tuple]: List of tuples, each containing:
@@ -25,7 +23,6 @@ def evaluate_groupings_gpt(
             - reference_count (str): Count of references found
             - reference_links (str): Example reference links
     """
-    openai.api_key = api_key
 
     # Build the prompt for all tasks
     full_prompt = "Evaluate multiple feature groupings for their semantic value and usage frequency.\n\n"
@@ -64,7 +61,7 @@ Task N:
 """
 
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": system_prompt},
@@ -107,27 +104,49 @@ def main():
     """
     Main function to test the evaluate_groupings function with predefined examples.
     """
-    # Predefined test cases
+    # Test multiple groupings for the same feature in a single call
     test_cases = [
-        ("Monthly Salary in Dollars", [(0, 1000), (1000, 10000), (11000, float('inf'))], (0, float('inf'))),
-        ("Temperature in Celsius", [(-30, 0), (1, 15), (16, 30), (31, 50), (51, float('inf'))], (float('-inf'), float('inf'))),
-        ("Age in Years", [(0, 12), (13, 19), (20, 64), (65, 100)], (0,100)),
-        ("BMI", [(0, 18.5), (18.5, 24.9), (25, 29.9), (30, 50)], (0, 50))
+        # Multiple groupings for Monthly Salary
+        [
+            ("Monthly Salary in Dollars", [(0, 1000), (1000, 10000), (11000, float('inf'))], (0, float('inf'))),
+            ("Monthly Salary in Dollars", [(0, 2000), (2000, 5000), (5000, 10000), (10000, float('inf'))], (0, float('inf'))),
+            ("Monthly Salary in Dollars", [(0, 3000), (3000, 6000), (6000, 9000), (9000, float('inf'))], (0, float('inf')))
+        ],
+        
+        # Multiple groupings for Temperature
+        [
+            ("Temperature in Celsius", [(-30, 0), (1, 15), (16, 30), (31, 50)], (float('-inf'), float('inf'))),
+            ("Temperature in Celsius", [(-50, 0), (0, 25), (25, 50)], (float('-inf'), float('inf'))),
+            ("Temperature in Celsius", [(float('-inf'), 0), (0, 20), (20, 40), (40, float('inf'))], (float('-inf'), float('inf')))
+        ],
+        
+        # Multiple groupings for Age
+        [
+            ("Age in Years", [(0, 12), (13, 19), (20, 64), (65, 100)], (0, 100)),
+            ("Age in Years", [(0, 18), (19, 35), (36, 50), (51, 65), (66, 100)], (0, 100)),
+            ("Age in Years", [(0, 21), (22, 40), (41, 60), (61, 80), (81, 100)], (0, 100))
+        ]
     ]
 
     try:
-        # Evaluate all test cases in one API call
-        results = evaluate_groupings_gpt(test_cases, GPT_API_KEY)
-        
-        # Print results for each test case
-        for (feature, grouping, feature_range), (grade, explanation, reference_count, reference_links) in zip(test_cases, results):
-            print(f"\nFeature: {feature}")
-            print(f"Grouping: {grouping}")
-            print(f"Grade: {grade}")
-            print(f"Explanation: {explanation}")
-            print(f"Reference Count: {reference_count}")
-            print(f"Reference Links: {reference_links}")
+        # Test each group of related test cases
+        for test_group in test_cases:
+            print(f"\nTesting multiple groupings for {test_group[0][0]}:")
             print("-" * 80)
+            
+            # Evaluate all test cases in the group in one API call
+            results = evaluate_groupings_gpt(test_group)
+            
+            # Print results for each test case in the group
+            for (feature, grouping, feature_range), (grade, explanation, reference_count, reference_links) in zip(test_group, results):
+                print(f"\nFeature: {feature}")
+                print(f"Grouping: {grouping}")
+                print(f"Feature Range: {feature_range}")
+                print(f"Grade: {grade}")
+                print(f"Explanation: {explanation}")
+                print(f"Reference Count: {reference_count}")
+                print(f"Reference Links: {reference_links}")
+                print("-" * 80)
             
     except RuntimeError as e:
         print(f"Error evaluating groupings: {e}")
