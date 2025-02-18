@@ -25,7 +25,7 @@ def evaluate_groupings_gpt(
     """
 
     # Build the prompt for all tasks
-    full_prompt = "Evaluate multiple feature groupings for their semantic value and usage frequency.\n\n"
+    tasks_prompt = ""
     
     for i, (feature_name, groupings, feature_range) in enumerate(tasks, 1):
         grouping_str = ", ".join([
@@ -34,23 +34,34 @@ def evaluate_groupings_gpt(
             else f"more than {low}" for (low, high) in groupings
         ])
         
-        full_prompt += f"""Task {i}:
+        tasks_prompt += f"""Task {i}:
 Feature: {feature_name}
 Range: {feature_range}
 Grouping: {grouping_str}
 
 """
 
-    system_prompt = """You are tasked with evaluating the semantic value of given groupings for specified features. For each task:
+    full_prompt = """You are tasked with evaluating the semantic value of given groupings for specified features. For each task:
 
-1. Evaluate how commonly the grouping method is used with the stated feature
-2. Search academic and statistical sources
-3. Provide a grade from:
-   1 = Not used at all
-   2 = Very few references
-   3 = Rare but used
-   4 = Very commonly used
-4. Provide reference counts and example links
+You are tasked with evaluating the semantic value of a given grouping for the specified feature, by providing a metric of the number of times the provided grouping method is used with the stated feature.
+or a standardized metric you will use the following defined sources:
+
+Google Scholar
+
+PubMed
+
+JSTOR
+
+Office for National Statistics (ONS)
+
+You will use this context to evaluate the grouping provided.
+
+You will also add a level to this response based on how common the usage of a specific grouping is in the sources, picked from these 4 grades:
+
+1. Not used at all
+2. Has seen very few references to it
+3. Rare but used
+4. Very commonly used
 
 Format your response for each task as:
 Task N:
@@ -58,13 +69,16 @@ Task N:
 - Reference Count In Sources: [count]
 - Reference Example Links: [links]
 - Explanation: [brief explanation]
-"""
+
+The tasks are:\n\n
+""" + tasks_prompt
 
     try:
+        print(f'prompt: {full_prompt}')
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
-                {"role": "system", "content": system_prompt},
+                {"role": "system", "content": "You are an assistant that evaluates the semantic value of groupings based on structured criteria."},
                 {"role": "user", "content": full_prompt}
             ],
             temperature=0.2,

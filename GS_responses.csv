@@ -1,0 +1,154 @@
+"Timestamp","Please enter your unique Prolific ID:","How would you evaluate the semantic value of the following grouping for the feature Blood Pressure (mmHg) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Blood pressure (mmHg)
+Range: >0
+Grouping: “Less than 120, 120 to 129, 130 to 139, 140 or higher”
+Consider how useful and meaningful this grouping is in contexts like medical diagnosis, hypertension management, or public health research.","How would you evaluate the semantic value of the following grouping for the feature Blood Pressure (mmHg) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Blood pressure (mmHg)
+Range: >0
+Grouping: “Less than 120, 110 or higher”
+Consider how useful and meaningful this grouping is in contexts like medical diagnosis, hypertension management, or public health research.","How would you evaluate the semantic value of the following grouping for the feature Body Mass Index (BMI) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: BMI
+Range: [10, 50]
+Grouping: “Less than 18.5, 18.5 to 24.9, 25 to 29.9, 30 or higher”
+Consider how useful and meaningful this grouping is in contexts like health assessments, obesity studies, or fitness research.","How would you evaluate the semantic value of the following grouping for the feature Body Mass Index (BMI) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: BMI
+Range: [10, 50]
+Grouping: “Less than 5, 5 to 15, higher than 15”
+Consider how useful and meaningful this grouping is in contexts like health assessments, obesity studies, or fitness research.","How would you evaluate the semantic value of the following grouping for the feature Air Quality Index (AQI) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Air Quality Index (AQI)
+Range: ≥0
+Grouping: “0–50, 51–100, 101–150, 151–200, 201–300, greater than 300”
+Consider how useful and meaningful this grouping is in contexts like environmental monitoring, public health advisories, or air pollution studies.","How would you evaluate the semantic value of the following grouping for the feature Air Quality Index (AQI) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Air Quality Index (AQI)
+Range: ≥0
+Grouping: “0–60, 61–120, 121–180, 181–240, 241–300, 301–500”
+Consider how useful and meaningful this grouping is in contexts like environmental monitoring, public health advisories, or air pollution studies.","How would you evaluate the semantic value of the following grouping for the feature Air Quality Index (AQI) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Air Quality Index (AQI)
+Range: ≥0
+Grouping: “0–40, 41–80, 81–120, 121–300, 301–500”
+Consider how useful and meaningful this grouping is in contexts like environmental monitoring, public health advisories, or air pollution studies.","How would you evaluate the semantic value of the following grouping for the feature Air Quality Index (AQI) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Air Quality Index (AQI)
+Range: ≥0
+Grouping: “0–75, 76–150, 151–225, 226–300, 301–375, 376–450, 451+”
+Consider how useful and meaningful this grouping is in contexts like environmental monitoring, public health advisories, or air pollution studies.","How would you evaluate the semantic value of the following grouping for the feature Air Quality Index (AQI) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Air Quality Index (AQI)
+Range: ≥0
+Grouping: “0–50, 51–100, 101–200, 201–300, 300+”
+Consider how useful and meaningful this grouping is in contexts like environmental monitoring, public health advisories, or air pollution studies.","How would you evaluate the semantic value of the following grouping for the feature Temperature on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Temperature
+Range: [-200, 500] Celsius
+Grouping: “Less than 0, 1 to 99, greater than 100”
+Consider how useful and meaningful this grouping is in contexts like thermodynamics, climate studies, or material science.","How would you evaluate the semantic value of the following grouping for the feature Temperature on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Temperature
+Range: [-200, 500] Celsius
+Grouping: “Less than 5, 5 to 25, greater than 25”
+Consider how useful and meaningful this grouping is in contexts like thermodynamics, climate studies, or material science.","How would you evaluate the semantic value of the following grouping for the feature Temperature on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Temperature
+Range: [-200, 500] Celsius
+Grouping: “Less than 3, 3 or greater”
+Consider how useful and meaningful this grouping is in contexts like thermodynamics, climate studies, or material science.","How would you evaluate the semantic value of the following grouping for the feature Temperature on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Temperature
+Range: [-200, 500] Celsius
+Grouping: “Less than or equal to -100, -100 to 0, 1 to 100, 101 to 200, 201 to 300, and so on”
+Consider how useful and meaningful this grouping is in contexts like atmospheric studies, industrial processes, or material science, where distinct temperature ranges may have specific significance.","How would you evaluate the semantic value of the following grouping for the feature Temperature on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Temperature
+Range: [-200, 500] Celsius
+Grouping: “Less than 10, 10 to 15, 15 to 20, 20 to 25, 25 to 30, more than 30”
+Consider how useful and meaningful this grouping is in contexts like atmospheric studies, industrial processes, or material science, where distinct temperature ranges may have specific significance.","How would you evaluate the semantic value of the following grouping for the feature Body Temperature on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Body temperature
+Range: [35, 42]
+Grouping: “Less than 36.1, 36.1 to 37.5, greater than 37.5”
+Consider how useful and meaningful this grouping is in contexts like medical diagnosis, health monitoring, or clinical studies.","How would you evaluate the semantic value of the following grouping for the feature Body Temperature on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Body temperature
+Range: [35, 42]
+Grouping: “35 to 37, 37 to 39, 39 to 41, greater than 41”
+Consider how useful and meaningful this grouping is in contexts like medical diagnosis, health monitoring, or studies related to fever and hypothermia.","How would you evaluate the semantic value of the following grouping for the feature GNI per capita (1,000 USD) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: GNI per capita (1,000 USD)
+Range: ≥0
+Grouping: “Less than 5, 5 or greater”
+Consider how useful and meaningful this grouping is in contexts like economic classification, development studies, or global income inequality analysis.","How would you evaluate the semantic value of the following grouping for the feature GNI per capita (1,000 USD) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: GNI per capita (1,000 USD)
+Range: ≥0
+Grouping: “Less than 1, 1 to 4, 4 to 7, 7 to 10, greater than 10”
+Consider how useful and meaningful this grouping is in contexts like economic classification, development studies, or global income inequality analysis.","How would you evaluate the semantic value of the following grouping for the feature GNI per capita (1,000 USD) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: GNI per capita (1,000 USD)
+Range: ≥0
+Grouping: “Less than 4.515, greater than or equal to 4.515”
+Consider how useful and meaningful this grouping is in contexts like economic threshold analysis, development classification, or studies of wealth distribution.","How would you evaluate the semantic value of the following grouping for the feature GNI per capita (1,000 USD) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: GNI per capita (1,000 USD)
+Range: ≥0
+Grouping: “Less than 1.145, 1.146 to 4.515, 4.516 to 14.005, greater than 14.005”
+Consider how useful and meaningful this grouping is in contexts like economic development classification, identifying income brackets, or analyzing disparities in global wealth distribution.","How would you evaluate the semantic value of the following grouping for the feature Movie Ratings (IMDb) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Movie Ratings (IMDb)
+Range: [0, 10]
+Grouping: “0 to 1, 1 to 2, 2 to 3, and so on up to 9 to 10”
+Consider how useful and meaningful this grouping is in contexts like analyzing rating distributions, understanding audience preferences, or categorizing movies based on quality.","How would you evaluate the semantic value of the following grouping for the feature Movie Ratings (IMDb) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Movie Ratings (IMDb)
+Range: [0, 10]
+Grouping: “Less than or equal to 7, greater than 7”
+Consider how useful and meaningful this grouping is in contexts like quick classification of movies as average or highly rated, audience satisfaction analysis, or creating recommendations based on general preferences.","How would you evaluate the semantic value of the following grouping for the feature Movie Ratings (IMDb) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Movie Ratings (IMDb)
+Range: [0, 10]
+Grouping: “Less than or equal to 4, 4 to 7, 7 to 9, greater than or equal to 9”
+Consider how useful and meaningful this grouping is in contexts like categorizing movies as poorly rated, average, good, or excellent, analyzing audience perceptions, or creating tiered recommendations.","How would you evaluate the semantic value of the following grouping for the feature Heart Rate (Percentage of HRmax) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Heart Rate (Percentage of HRmax)
+Range: [50%, 100%]
+Grouping: “50% to 60%, 60% to 70%, 70% to 80%, 80% to 90%, 90% to 100%”
+Consider how useful and meaningful this grouping is in contexts like fitness training zones, cardiovascular studies, or exercise intensity classification.","How would you evaluate the semantic value of the following grouping for the feature Heart Rate (Percentage of HRmax) on a scale from 1 to 4 (1 = not used at all, 4 = very commonly used)?
+Feature: Heart Rate (Percentage of HRmax)
+Range: [50%, 100%]
+Grouping: “50% to 85%, 85% to 100%”
+Consider how useful and meaningful this grouping is in contexts like distinguishing moderate to vigorous exercise intensity, identifying aerobic vs. anaerobic training zones, or providing simplified heart rate guidelines for fitness programs."
+"2025/01/12 4:13:56 pm EET","666c52e81925c554cb6468b4","3","2","3","3","3","3","2","4","2","4","2","3","3","3","3","3","4","1","3","3","4","2","3","4","3"
+"2025/01/12 4:29:23 pm EET","65a3ec77f674ac3e98f0c6ac","4","3","3","1","4","3","3","3","3","3","3","1","1","2","3","2","2","3","2","3","4","2","3","3","2"
+"2025/01/12 4:30:47 pm EET","669533c82c03a4d6320159d3","3","2","4","1","3","2","2","3","2","2","1","1","3","1","1","3","1","2","1","1","4","3","3","4","4"
+"2025/01/12 4:31:13 pm EET","60fc39cce64c39328a7c8904","4","2","4","1","4","2","1","2","3","3","1","1","2","2","4","3","1","3","1","3","1","3","4","4","3"
+"2025/01/12 4:34:35 pm EET","659960f32faa4ff4b116de92","4","1","4","1","4","2","1","1","4","2","2","1","2","4","4","2","2","3","2","3","3","2","3","4","3"
+"2025/01/12 4:37:01 pm EET","666c52e81925c554cb6468b4","3","2","4","2","4","2","3","3","2","3","2","3","2","4","3","2","2","3","4","3","3","3","3","3","3"
+"2025/01/12 4:38:39 pm EET","658c1f91c0e5d908b094430e","3","2","3","2","2","3","3","2","3","1","4","1","2","3","3","4","1","3","1","1","4","2","3","3","2"
+"2025/01/12 4:38:40 pm EET","67322bf19fd1915d1871ce52","4","3","3","4","3","2","3","3","4","4","2","4","3","3","4","3","3","2","2","4","3","4","4","3","2"
+"2025/01/12 4:40:42 pm EET","671a32049a7fd74f4025b805","4","1","4","1","4","3","3","2","4","2","2","1","4","2","4","4","2","4","2","2","2","4","4","4","3"
+"2025/01/12 4:44:03 pm EET","6725e7b41fcf010acfb50097","4","1","4","1","4","1","1","1","1","1","1","1","3","1","4","3","1","3","1","3","4","3","4","4","3"
+"2025/01/12 4:47:13 pm EET","63d3ff7455fe68b811ef6b57","4","2","3","2","1","3","4","2","1","3","1","1","3","2","3","4","3","2","2","2","1","3","3","3","3"
+"2025/01/12 4:53:45 pm EET","66699d67640ea64a505af734","4","2","4","1","4","3","2","3","1","1","2","1","2","3","2","4","2","3","1","3","1","2","3","2","3"
+"2025/01/12 4:54:35 pm EET","5d3b0da8a884020001881773","3","1","4","1","3","3","3","2","3","1","1","1","4","1","4","2","3","2","1","1","4","2","2","4","2"
+"2025/01/12 4:56:44 pm EET","5e54c7fc2394ea4c99f88987","4","1","4","3","4","4","3","4","3","2","3","1","3","2","3","3","1","2","1","2","4","1","2","4","3"
+"2025/01/12 4:57:55 pm EET","60bf28df4926a8b6391df575","2","3","3","2","4","3","2","3","3","2","3","1","4","3","4","3","2","3","2","4","3","2","4","4","3"
+"2025/01/12 4:58:56 pm EET","65b871f5e0a5665450beb655","4","3","3","4","4","3","4","4","4","4","4","4","3","4","3","3","4","3","4","1","4","3","3","4","4"
+"2025/01/12 5:04:17 pm EET","66af7ed56686510c31dbaff2","3","2","4","3","3","3","3","3","2","2","2","1","3","4","1","2","1","3","1","2","4","1","2","3","1"
+"2025/01/12 5:16:10 pm EET","613f4147504adc9f8afc0b14","3","2","1","2","2","2","2","3","3","3","2","1","3","2","3","2","2","3","1","3","1","2","4","3","2"
+"2025/01/12 5:36:42 pm EET","5ea1dc176205ad0c7c941ca1","3","1","2","3","2","3","3","2","3","1","1","3","1","2","2","1","2","3","1","2","1","2","3","1","3"
+"2025/01/12 5:38:59 pm EET","60ef2e52a188d9859f92bb58","4","1","4","1","4","2","3","2","4","2","3","1","4","3","4","3","1","4","2","4","3","3","4","3","4"
+"2025/01/12 5:50:38 pm EET","675ddd9a64d4dccdec8b8368","4","2","4","1","4","2","2","4","4","2","2","2","3","3","4","3","2","3","3","3","4","3","4","4","4"
+"2025/01/12 5:56:28 pm EET","659c10e095ca8d2e4b1d5048","3","2","4","1","4","3","3","3","3","2","2","1","3","2","3","3","1","3","3","3","3","3","3","4","3"
+"2025/01/12 6:09:44 pm EET","674db7d379c2fccb5685366d","4","4","4","4","4","3","3","3","4","2","2","3","4","2","2","2","2","4","4","4","4","4","3","4","4"
+"2025/01/12 6:12:28 pm EET","66878cd25fe34e69feb1a7bf","4","1","4","1","4","2","1","1","3","3","1","1","4","2","4","3","1","2","2","4","2","3","4","4","3"
+"2025/01/12 6:21:28 pm EET","6266f2db800b9205ce65d05c","2","3","2","3","2","3","3","3","4","2","1","1","3","4","3","3","1","3","2","3","3","2","4","4","2"
+"2025/01/12 6:31:31 pm EET","614f7d1a2eef4c845cbc7845","3","1","4","1","4","2","2","1","3","4","2","1","2","1","4","3","3","2","2","1","1","4","4","3","3"
+"2025/01/12 7:10:40 pm EET","60b9f1fe58782eeab6372f1c","4","2","4","1","4","3","1","2","4","2","3","3","3","2","3","4","1","3","2","3","2","4","4","4","3"
+"2025/01/12 8:58:00 pm EET","65f20179c0810071f7cb0354","4","2","4","2","4","3","2","1","3","3","2","1","4","3","4","3","3","2","1","2","3","3","2","3","4"
+"2025/01/12 8:58:07 pm EET","6718c98aba879c2ff2d74aa0","3","3","3","2","3","2","2","2","2","3","3","2","3","4","3","3","2","4","4","3","3","3","4","3","1"
+"2025/01/13 4:35:14 am EET","666559e634fffd1ce19ba654","3","1","3","1","4","4","4","4","2","1","2","1","4","1","3","4","2","3","1","4","4","1","2","4","2"
+"2025/01/13 4:57:19 am EET","66af8b16d5325f5b5d87c6bc","3","3","2","3","2","2","3","2","3","3","2","3","3","3","3","2","2","3","3","2","3","3","3","3","2"
+"2025/01/13 8:25:46 am EET","6113113ee1e4e6df85ec7e8a","3","1","4","1","4","2","2","2","3","3","1","1","3","1","4","3","1","1","4","3","4","3","1","2","2"
+"2025/01/13 9:52:37 am EET","615d3a160645989797ca0779","4","2","4","1","4","2","2","1","3","4","2","2","2","1","4","3","1","4","2","4","4","1","1","4","3"
+"2025/01/13 10:44:26 am EET","61715a02a3c88f5fb082a424","4","2","4","1","4","3","2","1","2","2","4","3","4","3","3","4","1","2","2","3","4","2","1","4","3"
+"2025/01/13 3:12:05 pm EET","5af573e7b4dfd600018fc0be","3","2","3","1","4","3","3","2","3","2","3","1","2","2","4","2","2","4","1","3","2","3","4","2","3"
+"2025/01/13 5:22:05 pm EET","66c184d2e32d48080b567e39","3","1","3","1","3","3","3","4","2","2","2","1","4","2","3","4","2","4","1","2","4","2","3","4","3"
+"2025/01/13 8:25:58 pm EET","615ebee41627a65c85ccb4b6","2","4","1","3","3","3","2","3","2","2","2","3","3","3","4","2","3","2","4","4","3","2","2","4","3"
+"2025/01/14 4:52:24 pm EET","67634f523650ccae94d100db","4","4","4","1","4","2","2","1","3","2","3","1","4","3","4","3","2","4","1","4","4","3","4","4","3"
+"2025/01/14 5:30:39 pm EET","5f63a2bc08a0080c790f8eb6","4","1","4","2","4","1","1","1","4","4","2","1","2","1","2","1","1","2","4","4","3","2","4","1","2"
+"2025/01/16 2:59:02 pm EET","65a9b398fbb34b326b966042","3","3","2","3","3","2","3","2","2","3","2","3","4","3","3","2","3","3","2","3","2","3","4","3","2"
+"2025/01/16 2:59:44 pm EET","6634f754adfec54a4b1aaed4","4","2","3","3","3","3","3","3","3","3","3","3","3","2","3","2","3","3","3","3","3","3","3","3","3"
+"2025/01/16 3:01:42 pm EET","616c026cadd0c9c23c911037","3","1","4","2","4","4","3","3","4","1","2","3","4","4","1","1","3","2","3","3","2","3","4","3","3"
+"2025/01/16 3:02:59 pm EET","63d7b16595cb392c4501cc1e","3","1","4","1","2","4","2","4","1","1","1","1","3","1","2","4","1","3","1","2","4","1","3","4","2"
+"2025/01/16 3:05:20 pm EET","66b230c49fc8df3f54cdf214","3","3","2","2","4","3","2","3","3","2","3","3","2","2","3","3","3","3","3","3","2","2","3","2","3"
+"2025/01/16 3:05:39 pm EET","605f377808e44ee8d091e275","4","1","4","1","4","3","2","2","4","3","2","1","3","3","3","4","2","3","1","2","3","3","2","4","2"
+"2025/01/16 3:06:50 pm EET","66e346d2f1c8095bcd67eec9","3","3","4","3","2","2","1","3","4","2","1","1","4","1","3","3","1","3","2","1","2","3","2","2","4"
+"2025/01/16 3:08:57 pm EET","65b130ee8a91563910dc60ec","4","2","3","1","3","2","3","3","3","2","3","2","3","3","2","3","1","2","2","3","4","1","3","3","2"
+"2025/01/16 3:10:01 pm EET","60fb2894ad56bad6ea26af54","3","2","3","4","1","1","1","1","1","4","4","3","3","3","4","1","1","1","1","3","4","4","4","4","4"
+"2025/01/16 3:11:21 pm EET","6737e1ed0619b25a6a4d5928","3","2","1","2","1","2","4","3","4","1","1","3","1","4","1","2","4","2","3","3","2","1","4","4","2"
+"2025/01/16 3:13:49 pm EET","6668576b58b4570739ab87d5","4","2","4","1","4","1","1","1","4","1","1","1","1","3","3","3","2","4","1","1","4","1","1","4","1"
+"2025/01/16 3:13:56 pm EET","66a7947c9f5b84c448a8d25a","2","3","4","4","1","2","4","4","4","1","4","2","1","3","4","4","1","2","4","4","4","1","1","4","3"
+"2025/01/16 3:27:32 pm EET","61339c86d5e0a08a3a039f4e","4","1","3","1","4","3","1","1","3","1","1","1","3","2","3","4","1","3","2","4","4","2","4","2","4"
+"2025/01/16 3:46:04 pm EET","669185d7fa7ea7a58d37bad8","4","4","4","1","4","3","3","3","4","1","1","1","3","4","4","3","1","3","4","4","3","4","4","4","2"
